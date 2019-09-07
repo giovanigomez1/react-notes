@@ -6,6 +6,8 @@ import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import NotesForm from './NotesForm';
 import NoteList from './NoteList'
+import {Link, Route} from 'react-router-dom'
+import Home from './Home'
 
 
 class App extends Component {
@@ -25,7 +27,6 @@ updateValue = field => e =>{
     [field]: e.target.value
   })
 }
-
 
 saveNote = (e) =>{
   if(this.state.title && this.state.description){
@@ -56,13 +57,21 @@ render(){
             <NoteList notes={this.state.notes}/>
           </Grid>
           <Grid item xs={8}>
-            <NotesForm title={this.state.title} description={this.state.description}
-             updateValue={this.updateValue} saveNote={this.saveNote}/>
+            <Route exact path="/" component={Home}/>
+            
+            <Route exact path="/add" render={()=>(
+              <NotesForm title={this.state.title} description={this.state.description}
+              updateValue={this.updateValue} saveNote={this.saveNote}/>
+            )}/>
+              
+             
           </Grid>
         </Grid>
-        <Fab color="primary" className="addIcon">
-          <AddIcon />
-        </Fab>
+        
+          <Fab color="primary" className="addIcon" component={Link} to="/add">
+            <AddIcon />
+          </Fab>      
+        
 
       </Fragment>
     );  

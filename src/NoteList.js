@@ -8,34 +8,34 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import { List, ListItemSecondaryAction } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import moment from "moment"
+import {Link} from 'react-router-dom'
 
 
 const NoteList = ({notes}) => {
     return notes.length ? (
-        <List>
+      <List>
         {
-                notes.map(note => {
-                  return(
-                    <ListItem button key={note.id}>
-                    <ListItemText primary={note.title} secondary={moment(note.id).format("MMM Do YY")}/>
-                    <ListItemSecondaryAction>
-                      <IconButton>
-                        <DeleteIcon />
-                      </IconButton>
-                    </ListItemSecondaryAction>
-                  </ListItem>
-
-                  )
-                })
-                }
-    </List>
+          notes.map(note => {
+            return(
+              <ListItem button component={Link} to={`/view/${note.id}`} key={note.id}>
+                <ListItemText primary={note.title} secondary={moment(note.id).format("MMM Do YY")}/>
+                  <ListItemSecondaryAction>
+                    <IconButton>
+                      <DeleteIcon />
+                    </IconButton>
+                  </ListItemSecondaryAction>
+              </ListItem>
+            )
+          })
+        }
+      </List>
         
     ) : (
         <Typography align="center" variant="h6">
             No notes yet
         </Typography>
     )
-    
 }
+
 
 export default NoteList
