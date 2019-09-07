@@ -13,6 +13,21 @@ function App() {
         Hello world
       </Typography>
 
+      <Grid container justify='center' spacing={2}>
+        <Grid item xs={4}>
+
+        </Grid>
+        <Grid item xs={8}>
+
+        </Grid>
+      </Grid>
+
+      <Fab color="primary">
+        <AddIcon />
+
+        
+      </Fab>
+
     </Fragment>
   );
 }
