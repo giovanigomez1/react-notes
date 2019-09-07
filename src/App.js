@@ -8,6 +8,9 @@ import NotesForm from './NotesForm';
 import NoteList from './NoteList'
 import {Link, Route} from 'react-router-dom'
 import Home from './Home'
+import Container from '@material-ui/core/Container';
+import Note from './Note'
+
 
 
 class App extends Component {
@@ -43,11 +46,11 @@ saveNote = (e) =>{
   }
 }
 
-
 render(){
   console.log(this.state)
     return (
       <Fragment>
+        <Container maxWidth="lg">
         <Typography align="center" variant="h2" gutterBottom>
           Hello world
         </Typography>
@@ -58,21 +61,23 @@ render(){
           </Grid>
           <Grid item xs={8}>
             <Route exact path="/" component={Home}/>
-            
-            <Route exact path="/add" render={()=>(
+            <Route exact path="/addNote" render={()=>(
               <NotesForm title={this.state.title} description={this.state.description}
               updateValue={this.updateValue} saveNote={this.saveNote}/>
-            )}/>
-              
-             
+            )}
+            />
+            <Route path='/view/:id' 
+            render={props => <Note {...props} notes={this.state.notes}/>}/>
           </Grid>
         </Grid>
         
-          <Fab color="primary" className="addIcon" component={Link} to="/add">
+        
+          <Fab color="primary" className="addIcon" component={Link} to="/addNote">
             <AddIcon />
           </Fab>      
+        </Container>
         
-
+   
       </Fragment>
     );  
   }

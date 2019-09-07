@@ -1,8 +1,6 @@
 import React from 'react'
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import Checkbox from '@material-ui/core/Checkbox';
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { List, ListItemSecondaryAction } from '@material-ui/core';
@@ -32,7 +30,7 @@ const NoteList = ({notes}) => {
         
     ) : (
         <Typography align="center" variant="h6">
-            No notes yet
+            No notes yet...
         </Typography>
     )
 }
