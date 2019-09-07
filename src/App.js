@@ -1,4 +1,4 @@
-import React, {Fragment} from 'react';
+import React, {Component, Fragment} from 'react';
 // Material UI
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
@@ -9,31 +9,55 @@ import NotesForm from './NotesForm';
 
 
 
-function App() {
-  return (
-    <Fragment>
-      <Typography align="center" variant="h2" gutterBottom>
-        Hello world
-      </Typography>
+class App extends Component {
+  
+  constructor(props){
+    super(props)
+    this.state = {
+      title: "",
+      description: "",
+      notes: []
+    }
+  }
 
-      <Grid container justify='center' spacing={2}>
-        <Grid item xs={4}>
+updateValue = field => e =>{
+  console.log(e.target.value)
+  console.log()
+  this.setState({
+    [field]: e.target.value
+  })
+}
 
+
+
+
+render(){
+  console.log(this.state)
+    return (
+      <Fragment>
+        <Typography align="center" variant="h2" gutterBottom>
+          Hello world
+        </Typography>
+  
+        <Grid container justify='center' spacing={2}>
+          <Grid item xs={4}>
+  
+          </Grid>
+          <Grid item xs={8}>
+            <NotesForm title={this.state.title} description={this.state.description} updateValue={this.updateValue}/>
+          </Grid>
         </Grid>
-        <Grid item xs={8}>
-          <NotesForm />
-        </Grid>
-      </Grid>
-
-      <Fab color="primary" className="addIcon">
-
-        <AddIcon />
-
-        
-      </Fab>
-
-    </Fragment>
-  );
+  
+        <Fab color="primary" className="addIcon">
+  
+          <AddIcon />
+  
+          
+        </Fab>
+  
+      </Fragment>
+    );  
+  }
 }
 
 export default App;
