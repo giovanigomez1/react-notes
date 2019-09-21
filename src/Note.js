@@ -1,12 +1,8 @@
-import React, {Fragment} from 'react'
+import React, {Fragment, Redirect} from 'react'
 import Typography from '@material-ui/core/Typography';
 
 
-
-const Note = props =>{
-    
-    const note = props.notes.filter(note => note.id === parseInt(props.match.params.id))[0]
-
+const Note = ({note}) =>{
     return(
         <Fragment>
             <Typography align="center" variant="h4" gutterBottom>
@@ -16,7 +12,7 @@ const Note = props =>{
                 {note.description}
             </Typography>
         </Fragment>
-    )
+    )    
 }
 
 export default Note

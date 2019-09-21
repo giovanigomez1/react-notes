@@ -6,7 +6,7 @@ import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
 import NotesForm from './NotesForm';
 import NoteList from './NoteList'
-import {Link, Route} from 'react-router-dom'
+import {Link, Route, Redirect} from 'react-router-dom'
 import Home from './Home'
 import Container from '@material-ui/core/Container';
 import Note from './Note'
@@ -77,7 +77,12 @@ render(){
             )}
             />
             <Route path='/view/:id' 
-            render={props => <Note {...props} notes={this.state.notes}/>}/>
+            render={props =>  {
+              const note = this.state.notes.filter(note => note.id === parseInt(props.match.params.id))[0]
+              return note ? <Note note = {note} /> : <Redirect to="/" />
+            }}
+            />
+            
           </Grid>
         </Grid>
         
