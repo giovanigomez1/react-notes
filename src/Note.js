@@ -1,7 +1,6 @@
 import React, {Fragment, Redirect} from 'react'
 import Typography from '@material-ui/core/Typography';
 
-
 const Note = ({note}) =>{
     return(
         <Fragment>
