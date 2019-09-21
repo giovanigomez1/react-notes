@@ -31,21 +31,29 @@ updateValue = field => e =>{
 
 saveNote = (e) =>{
   if(this.state.title && this.state.description){
+    this.setState( state => {
+      return{
+        notes: [
+          ...state.notes, 
+          {
+            id: Date.now(),
+            title: state.title, 
+            description: state.description
+          }
+        ], title:"",description:""
+      }
+     })
+    }
+  }
+
+
+  deleteNote = (id) =>{
+    console.log(id)
     this.setState({
-      notes: [
-        ...this.state.notes, 
-        {
-          id: Date.now(),
-          title: this.state.title, 
-          description: this.state.description
-        }
-      ], title:"",description:""
+      notes: this.state.notes.filter(note =>  note.id !== id
+      )
     })
   }
-}
-
-
-
 
 
 render(){
@@ -59,7 +67,7 @@ render(){
   
         <Grid container justify='center' spacing={2}>
           <Grid item xs={4}>
-            <NoteList notes={this.state.notes} deleteNote={this.deleteNote}/>
+            <NoteList notes={this.state.notes} deleteNote={this.deleteNote} deleteNote={this.deleteNote}/>
           </Grid>
           <Grid item xs={8}>
             <Route exact path="/" component={Home}/>

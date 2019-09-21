@@ -9,16 +9,16 @@ import moment from "moment"
 import {Link} from 'react-router-dom'
 
 
-const NoteList = ({notes}) => {
+const NoteList = ({notes, deleteNote}) => {
     return notes.length ? (
       <List>
         {
-          notes.map(note => {
+          notes.map((note) => {
             return(
               <ListItem button component={Link} to={`/view/${note.id}`} key={note.id}>
                 <ListItemText primary={note.title} secondary={moment(note.id).format("MMM Do YY")}/>
                   <ListItemSecondaryAction>
-                    <IconButton>
+                    <IconButton onClick={()=>deleteNote(note.id)}>
                       <DeleteIcon/>
                     </IconButton>
                   </ListItemSecondaryAction>
