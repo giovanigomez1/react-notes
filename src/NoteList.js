@@ -19,7 +19,7 @@ const NoteList = ({notes}) => {
                 <ListItemText primary={note.title} secondary={moment(note.id).format("MMM Do YY")}/>
                   <ListItemSecondaryAction>
                     <IconButton>
-                      <DeleteIcon />
+                      <DeleteIcon/>
                     </IconButton>
                   </ListItemSecondaryAction>
               </ListItem>

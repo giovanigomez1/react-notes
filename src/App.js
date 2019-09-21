@@ -11,8 +11,6 @@ import Home from './Home'
 import Container from '@material-ui/core/Container';
 import Note from './Note'
 
-
-
 class App extends Component {
   constructor(props){
     super(props)
@@ -46,6 +44,10 @@ saveNote = (e) =>{
   }
 }
 
+
+
+
+
 render(){
   console.log(this.state)
     return (
@@ -57,7 +59,7 @@ render(){
   
         <Grid container justify='center' spacing={2}>
           <Grid item xs={4}>
-            <NoteList notes={this.state.notes}/>
+            <NoteList notes={this.state.notes} deleteNote={this.deleteNote}/>
           </Grid>
           <Grid item xs={8}>
             <Route exact path="/" component={Home}/>
