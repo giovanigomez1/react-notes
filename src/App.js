@@ -1,4 +1,5 @@
 import React, {Component, Fragment} from 'react';
+import axios from 'axios'
 // Material UI
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
@@ -20,6 +21,20 @@ class App extends Component {
       notes: []
     }
   }
+
+
+  componentDidMount(){
+    axios.get('./notes.json').then(response => {
+      if(response.status === 200 && response.data){
+        this.setState({
+          notes: response.data
+        })
+      }
+    })
+    .catch(err => console.log(err))
+  }
+
+
 
 updateValue = field => e =>{
   console.log(e.target.value)
@@ -54,6 +69,7 @@ saveNote = (e) =>{
       )
     })
   }
+
 
 
 render(){
