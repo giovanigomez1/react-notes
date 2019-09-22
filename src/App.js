@@ -26,14 +26,15 @@ class App extends Component {
   componentDidMount(){
     axios.get('./notes.json').then(response => {
       if(response.status === 200 && response.data){
+        
         this.setState({
           notes: response.data
         })
       }
     })
     .catch(err => console.log(err))
+    
   }
-
 
 
 updateValue = field => e =>{
@@ -73,7 +74,7 @@ saveNote = (e) =>{
 
 
 render(){
-  console.log(this.state)
+  
     return (
       <Fragment>
         <Container maxWidth="lg">
@@ -92,16 +93,15 @@ render(){
               updateValue={this.updateValue} saveNote={this.saveNote}/>
             )}
             />
-            <Route path='/view/:id' 
+            <Route path='/view/:id'
             render={props =>  {
-              const note = this.state.notes.filter(note => note.id === parseInt(props.match.params.id))[0]
+              const note = this.state.notes.filter(note => note.id === parseInt(props.match.params.id) )[0]
               return note ? <Note note = {note} /> : <Redirect to="/" />
             }}
             />
             
           </Grid>
         </Grid>
-        
         
           <Fab color="primary" className="addIcon" component={Link} to="/addNote">
             <AddIcon />

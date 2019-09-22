@@ -10,6 +10,7 @@ import {Link} from 'react-router-dom'
 
 
 const NoteList = ({notes, deleteNote}) => {
+  console.log(notes)
     return notes.length ? (
       <List>
         {
