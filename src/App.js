@@ -22,7 +22,6 @@ class App extends Component {
     }
   }
 
-
   componentDidMount(){
     axios.get('./notes.json').then(response => {
       if(response.status === 200 && response.data){
@@ -32,10 +31,8 @@ class App extends Component {
         })
       }
     })
-    .catch(err => console.log(err))
-    
+    .catch(err => console.log(err)) 
   }
-
 
 updateValue = field => e =>{
   console.log(e.target.value)
@@ -62,7 +59,6 @@ saveNote = (e) =>{
     }
   }
 
-
   deleteNote = (id) =>{
     console.log(id)
     this.setState({
@@ -71,10 +67,7 @@ saveNote = (e) =>{
     })
   }
 
-
-
 render(){
-  
     return (
       <Fragment>
         <Container maxWidth="lg">
@@ -84,7 +77,7 @@ render(){
   
         <Grid container justify='center' spacing={2}>
           <Grid item xs={4}>
-            <NoteList notes={this.state.notes} deleteNote={this.deleteNote} deleteNote={this.deleteNote}/>
+            <NoteList notes={this.state.notes} deleteNote={this.deleteNote}/>
           </Grid>
           <Grid item xs={8}>
             <Route exact path="/" component={Home}/>
@@ -102,15 +95,12 @@ render(){
             
           </Grid>
         </Grid>
-        
           <Fab color="primary" className="addIcon" component={Link} to="/addNote">
             <AddIcon />
           </Fab>      
-        </Container>
-   
+        </Container>  
       </Fragment>
     );  
   }
 }
-
 export default App;
